@@ -1,0 +1,9 @@
+# Node / build artifacts
+node_modules/
+dist/
+build/
+
+# system files
+.DS_Store
+.vscode/
+.env
