@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en" class="antialiased">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mohamed Sadaka — Frontend Developer</title>
+
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Play CDN config & CDN -->
+  <script>
+    // Tailwind Play CDN configuration: colors and dark mode via class
+    window.tailwind = {
+      config: {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primaryBg: '#111827',
+              secondaryBg: '#1F2937',
+              softGray: '#E5E7EB',
+              accentTeal: '#2DD4BF'
+            },
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui']
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <meta name="description" content="Mohamed Sadaka — Frontend Developer. I create beautiful, responsive, and user-friendly web applications.">
+
+  <style>
+    /* Small custom styles (keeps Tailwind for main styling) */
+    :root { color-scheme: dark; }
+    .type-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.2em;
+      background: #e5e7eb;
+      margin-left: 6px;
+      vertical-align: -2px;
+      animation: blink 1s steps(2, start) infinite;
+    }
+    @keyframes blink { to { visibility: hidden; } }
+
+    /* small helper for reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .type-cursor { animation: none; }
+      .animate-on-scroll { transition: none !important; transform: none !important; opacity: 1 !important; }
+    }
+  </style>
+</head>
+<body class="bg-primaryBg text-softGray font-sans selection:bg-accentTeal selection:text-primaryBg">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-primaryBg/60 border-b border-primaryBg/40">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-md bg-gradient-to-br from-accentTeal/80 to-white/10 flex items-center justify-center text-primaryBg font-bold">
+          MS
+        </div>
+        <span class="text-white font-semibold">Mohamed Sadaka</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#home" class="hover:underline hover:underline-offset-4 decoration-accentTeal transition">Home</a>
+        <a href="#about" class="hover:underline hover:underline-offset-4 decoration-accentTeal transition">About</a>
+        <a href="#projects" class="hover:underline hover:underline-offset-4 decoration-accentTeal transition">Projects</a>
+        <a href="#contact" class="hover:underline hover:underline-offset-4 decoration-accentTeal transition">Contact</a>
+        <button id="theme-toggle" aria-label="Toggle theme" class="ml-2 p-2 rounded-md bg-secondaryBg hover:bg-secondaryBg/80 transition">
+          <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accentTeal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-12.66l-.7.7M5.05 18.95l-.7.7M21 12h-1M4 12H3m15.66 5.66l-.7-.7M6.34 6.34l-.7-.7" />
+          </svg>
+        </button>
+      </nav>
+
+      <!-- Mobile controls -->
+      <div class="md:hidden flex items-center gap-3">
+        <button id="theme-toggle-mobile" aria-label="Toggle theme" class="p-2 rounded-md bg-secondaryBg">
+          <svg id="theme-icon-mobile" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accentTeal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-12.66l-.7.7M5.05 18.95l-.7.7M21 12h-1M4 12H3m15.66 5.66l-.7-.7M6.34 6.34l-.7-.7" />
+          </svg>
+        </button>
+
+        <button id="mobile-menu-button" aria-label="Open menu" class="p-2 rounded-md bg-secondaryBg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-softGray" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden bg-primaryBg/95 border-t border-primaryBg/40 hidden">
+      <div class="px-4 py-4 flex flex-col gap-3">
+        <a href="#home" class="block px-2 py-2 rounded hover:bg-secondaryBg">Home</a>
+        <a href="#about" class="block px-2 py-2 rounded hover:bg-secondaryBg">About</a>
+        <a href="#projects" class="block px-2 py-2 rounded hover:bg-secondaryBg">Projects</a>
+        <a href="#contact" class="block px-2 py-2 rounded hover:bg-secondaryBg">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="home" class="max-w-6xl mx-auto px-4">
+
+    <!-- HERO -->
+    <section class="min-h-[70vh] flex items-center" aria-labelledby="hero-heading">
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-12">
+        <div>
+          <p class="text-accentTeal font-medium mb-3">Frontend Developer</p>
+          <h1 id="hero-heading" class="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+            <span id="typewriter" class="inline"></span>
+            <span class="type-cursor" aria-hidden="true"></span>
+          </h1>
+
+          <p class="mt-6 max-w-xl text-softGray/90">
+            I create beautiful, responsive, and user-friendly web applications from the ground up.
+          </p>
+
+          <div class="mt-8 flex gap-4">
+            <a href="#projects" id="cta-work" class="inline-flex items-center gap-3 bg-accentTeal text-primaryBg px-5 py-3 rounded-md font-medium hover:scale-[1.02] transition-shadow shadow-sm">
+              View My Work
+            </a>
+            <a href="#contact" class="inline-flex items-center gap-3 border border-secondaryBg px-5 py-3 rounded-md hover:border-accentTeal transition">
+              Contact Me
+            </a>
+          </div>
+        </div>
+
+        <div class="hidden md:block">
+          <div class="rounded-xl bg-secondaryBg p-6">
+            <p class="text-sm text-softGray/80 mb-3">Quick Info</p>
+            <ul class="space-y-2 text-softGray text-sm">
+              <li><strong class="text-white">Role:</strong> Frontend Developer (Freelance)</li>
+              <li><strong class="text-white">Focus:</strong> React, Tailwind, Accessible UI</li>
+              <li><strong class="text-white">Location:</strong> Remote</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-12 animate-on-scroll opacity-0 translate-y-6" aria-labelledby="about-heading">
+      <div class="max-w-3xl">
+        <h2 id="about-heading" class="text-2xl text-white font-semibold mb-4">About Me</h2>
+        <p class="text-softGray leading-relaxed">
+          I'm Mohamed Sadaka — a passionate frontend developer who loves solving problems, crafting intuitive user interfaces, and delivering clean, maintainable code.
+          My journey into web development started from a curiosity for how the web works and evolved into a freelance career where I design and build products end-to-end.
+          While I haven't built my experience within a large corporate setting, I thrive in self-directed environments — collaborating directly with clients, owning project timelines, and turning ideas into polished web experiences.
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-12">
+      <h3 class="text-xl text-white font-semibold mb-6">Skills</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <!-- Skill card -->
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-secondaryBg hover:scale-[1.02] transition transform">
+          <div class="w-10 h-10 rounded-md bg-primaryBg flex items-center justify-center text-accentTeal font-semibold">H5</div>
+          <div>
+            <div class="text-white font-medium">HTML5</div>
+            <div class="text-sm text-softGray/80">Semantic markup</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-secondaryBg hover:scale-[1.02] transition transform">
+          <div class="w-10 h-10 rounded-md bg-primaryBg flex items-center justify-center text-accentTeal font-semibold">C3</div>
+          <div>
+            <div class="text-white font-medium">CSS3</div>
+            <div class="text-sm text-softGray/80">Responsive layouts</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-secondaryBg hover:scale-[1.02] transition transform">
+          <div class="w-10 h-10 rounded-md bg-primaryBg flex items-center justify-center text-accentTeal font-semibold">JS</div>
+          <div>
+            <div class="text-white font-medium">JavaScript (ES6+)</div>
+            <div class="text-sm text-softGray/80">Modern JS patterns</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-secondaryBg hover:scale-[1.02] transition transform">
+          <div class="w-10 h-10 rounded-md bg-primaryBg flex items-center justify-center text-accentTeal font-semibold">R</div>
+          <div>
+            <div class="text-white font-medium">React</div>
+            <div class="text-sm text-softGray/80">Component-driven UI</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-secondaryBg hover:scale-[1.02] transition transform">
+          <div class="w-10 h-10 rounded-md bg-primaryBg flex items-center justify-center text-accentTeal font-semibold">N</div>
+          <div>
+            <div class="text-white font-medium">Node.js</div>
+            <div class="text-sm text-softGray/80">Server-side JavaScript</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-secondaryBg hover:scale-[1.02] transition transform">
+          <div class="w-10 h-10 rounded-md bg-primaryBg flex items-center justify-center text-accentTeal font-semibold">E</div>
+          <div>
+            <div class="text-white font-medium">Express.js</div>
+            <div class="text-sm text-softGray/80">APIs & routing</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-secondaryBg hover:scale-[1.02] transition transform">
+          <div class="w-10 h-10 rounded-md bg-primaryBg flex items-center justify-center text-accentTeal font-semibold">G</div>
+          <div>
+            <div class="text-white font-medium">Git</div>
+            <div class="text-sm text-softGray/80">Version control</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-secondaryBg hover:scale-[1.02] transition transform">
+          <div class="w-10 h-10 rounded-md bg-primaryBg flex items-center justify-center text-accentTeal font-semibold">T</div>
+          <div>
+            <div class="text-white font-medium">Tailwind CSS</div>
+            <div class="text-sm text-softGray/80">Utility-first UI</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-secondaryBg hover:scale-[1.02] transition transform">
+          <div class="w-10 h-10 rounded-md bg-primaryBg flex items-center justify-center text-accentTeal font-semibold">R</div>
+          <div>
+            <div class="text-white font-medium">Responsive Design</div>
+            <div class="text-sm text-softGray/80">Mobile-first layouts</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-12">
+      <h3 class="text-2xl text-white font-semibold mb-6">Projects</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Project card template -->
+        <article class="rounded-xl bg-secondaryBg p-5 transform transition hover:scale-[1.02] animate-on-scroll opacity-0 translate-y-6">
+          <h4 class="text-xl font-semibold text-white">ShopSphere</h4>
+          <p class="mt-2 text-sm text-softGray">A modern, responsive e-commerce interface with features like product browsing, a shopping cart, and a clean checkout process.</p>
+          <div class="mt-4 text-xs text-softGray/80 flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-primaryBg rounded text-accentTeal">React</span>
+            <span class="px-2 py-1 bg-primaryBg rounded text-accentTeal">Tailwind CSS</span>
+            <span class="px-2 py-1 bg-primaryBg rounded text-accentTeal">Context API</span>
+          </div>
+          <div class="mt-4 flex gap-3">
+            <button disabled class="px-3 py-2 rounded bg-primaryBg text-softGray/70 cursor-not-allowed">Live Demo</button>
+            <button disabled class="px-3 py-2 rounded border border-primaryBg text-softGray/70 cursor-not-allowed">GitHub</button>
+          </div>
+        </article>
+
+        <article class="rounded-xl bg-secondaryBg p-5 transform transition hover:scale-[1.02] animate-on-scroll opacity-0 translate-y-6">
+          <h4 class="text-xl font-semibold text-white">TaskFlow</h4>
+          <p class="mt-2 text-sm text-softGray">A full-featured productivity app for organizing tasks. Includes user authentication and real-time data synchronization.</p>
+          <div class="mt-4 text-xs text-softGray/80 flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-primaryBg rounded text-accentTeal">React</span>
+            <span class="px-2 py-1 bg-primaryBg rounded text-accentTeal">Firebase</span>
+            <span class="px-2 py-1 bg-primaryBg rounded text-accentTeal">CSS Modules</span>
+          </div>
+          <div class="mt-4 flex gap-3">
+            <button disabled class="px-3 py-2 rounded bg-primaryBg text-softGray/70 cursor-not-allowed">Live Demo</button>
+            <button disabled class="px-3 py-2 rounded border border-primaryBg text-softGray/70 cursor-not-allowed">GitHub</button>
+          </div>
+        </article>
+
+        <article class="rounded-xl bg-secondaryBg p-5 transform transition hover:scale-[1.02] animate-on-scroll opacity-0 translate-y-6">
+          <h4 class="text-xl font-semibold text-white">DevJot</h4>
+          <p class="mt-2 text-sm text-softGray">A minimalist blog built for developers, featuring markdown support and a sleek, readable design.</p>
+          <div class="mt-4 text-xs text-softGray/80 flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-primaryBg rounded text-accentTeal">Next.js</span>
+            <span class="px-2 py-1 bg-primaryBg rounded text-accentTeal">Node.js</span>
+            <span class="px-2 py-1 bg-primaryBg rounded text-accentTeal">Express.js</span>
+          </div>
+          <div class="mt-4 flex gap-3">
+            <button disabled class="px-3 py-2 rounded bg-primaryBg text-softGray/70 cursor-not-allowed">Live Demo</button>
+            <button disabled class="px-3 py-2 rounded border border-primaryBg text-softGray/70 cursor-not-allowed">GitHub</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-12 animate-on-scroll opacity-0 translate-y-6">
+      <h3 class="text-2xl text-white font-semibold mb-4">Experience</h3>
+      <div class="rounded-lg bg-secondaryBg p-6">
+        <h4 class="text-lg text-white font-semibold">Freelance Web Developer</h4>
+        <p class="text-sm text-softGray/80 mb-3">2023 - Present</p>
+        <ul class="list-disc list-inside text-softGray space-y-2">
+          <li>Developed and maintained responsive websites for various clients.</li>
+          <li>Collaborated directly with stakeholders to define project requirements.</li>
+          <li>Managed project timelines and deliverables in an agile, self-directed environment.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-12">
+      <h3 class="text-2xl text-white font-semibold mb-4">Let's Build Something Together.</h3>
+      <p class="text-softGray max-w-xl">I'm currently available for freelance opportunities. Feel free to reach out!</p>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-4">
+        <a href="#" class="inline-flex items-center gap-3 bg-accentTeal text-primaryBg px-5 py-3 rounded-md">Email (placeholder)</a>
+        <a href="#" class="inline-flex items-center gap-3 border border-secondaryBg px-5 py-3 rounded-md hover:border-accentTeal">LinkedIn (placeholder)</a>
+        <a href="#" class="inline-flex items-center gap-3 border border-secondaryBg px-5 py-3 rounded-md hover:border-accentTeal">GitHub (placeholder)</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 text-sm text-softGray/80 border-t border-primaryBg/40 mt-12">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p>© 2025 Mohamed Sadaka. All rights reserved.</p>
+        <div class="flex gap-3">
+          <a href="#" class="hover:text-accentTeal">Twitter</a>
+          <a href="#" class="hover:text-accentTeal">LinkedIn</a>
+          <a href="#" class="hover:text-accentTeal">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
